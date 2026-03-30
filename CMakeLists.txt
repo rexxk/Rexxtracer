@@ -7,18 +7,27 @@ cmake_minimum_required(VERSION 3.15)
 
 include(FetchContent)
 
+# 3rd party
+FetchContent_Declare(glfw GIT_REPOSITORY https://github.com/glfw/glfw GIT_TAG master)
+FetchContent_MakeAvailable(glfw)
+
+# Policy
 
 cmake_policy(SET CMP0076 NEW)
 cmake_policy(SET CMP0079 NEW)
 
-#project
+# Project
 
 project("Rexxtrace")
 
 add_executable(Rexxtrace)
+
+target_include_directories(Rexxtrace PRIVATE ${CMAKE_SOURCE_DIR}/src ${glfw_SOURCE_DIR}/include)
+target_link_libraries(Rexxtrace PRIVATE glfw)
 
 set_property(TARGET Rexxtrace PROPERTY CXX_STANDARD 26)
 set_property(TARGET Rexxtrace PROPERTY DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 set(CMAKE_DEFAULT_STARTUP_PROJECT Rexxtrace)
 
 add_subdirectory(src)
+
