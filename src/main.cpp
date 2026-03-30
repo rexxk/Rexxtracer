@@ -2,6 +2,8 @@
 #include "Event/EventHandler.h"
 #include "Renderer/RendererContext.h"
 
+#include <glad/glad.h>
+
 #include <print>
 
 
@@ -34,6 +36,12 @@ int main()
 	{
 		rendererContext.PollEvents();
 		EventHandler::Poll();
+
+		glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		rendererContext.SwapBuffers();
 	}
 
 

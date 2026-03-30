@@ -42,6 +42,8 @@ namespace Nut
 		glfwMakeContextCurrent(m_WindowPointer);
 		glfwShowWindow(m_WindowPointer);
 
+		gladLoadGL();
+
 		glfwSetWindowCloseCallback(m_WindowPointer, [](GLFWwindow* window)
 			{
 				Ref<WindowClosedEvent> event = CreateRef<WindowClosedEvent>();
