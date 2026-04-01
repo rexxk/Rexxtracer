@@ -15,7 +15,7 @@ using namespace Nut;
 
 int main()
 {
-	std::println("Rexxtrace 2026");
+	std::println("Rexxtracer 2026");
 
 	bool isRunning{ true };
 
@@ -24,7 +24,7 @@ int main()
 		.Height = 720,
 		.Fullscreen = true,
 		.VSync = false,
-		.Title = "Rexxtrace 2026"
+		.Title = "Rexxtracer 2026"
 	};
 
 	RendererContext rendererContext(windowSpec);
