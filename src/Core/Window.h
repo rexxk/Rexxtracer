@@ -35,6 +35,8 @@ namespace Nut
 		auto PollEvents() -> void;
 		auto Swap(int32_t vSync) -> void;
 
+		auto GetHandle() -> GLFWwindow* { return m_WindowPointer; }
+
 	private:
 		GLFWwindow* m_WindowPointer{};
 	};

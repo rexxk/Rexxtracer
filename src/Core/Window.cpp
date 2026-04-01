@@ -50,6 +50,11 @@ namespace Nut
 				EventHandler::AddEvent(event);
 			});
 
+		glfwSetWindowSizeCallback(m_WindowPointer, [](GLFWwindow* window, std::int32_t width, std::int32_t height)
+			{
+				Ref<WindowResizedEvent> event = CreateRef<WindowResizedEvent>(width, height);
+				EventHandler::AddEvent(event);
+			});
 	}
 
 	Window::~Window()

@@ -1,10 +1,13 @@
 #include "Core/Window.h"
 #include "Event/EventHandler.h"
 #include "Renderer/RendererContext.h"
+#include "UI/UIContext.h"
 
 #include <glad/glad.h>
 
 #include <print>
+
+#include <imgui.h>
 
 
 using namespace Nut;
@@ -19,12 +22,14 @@ int main()
 	WindowSpecification windowSpec{
 		.Width = 1280,
 		.Height = 720,
-		.Fullscreen = false,
+		.Fullscreen = true,
 		.VSync = false,
 		.Title = "Rexxtrace 2026"
 	};
 
 	RendererContext rendererContext(windowSpec);
+
+	UIContext uiContext{rendererContext.GetWindowHandle()};
 
 	EventHandler::Subscribe(EventType::WindowClose, [&](Ref<Event> e)
 		{
@@ -40,6 +45,11 @@ int main()
 		glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		uiContext.NewFrame();
+
+		ImGui::ShowDemoWindow();
+
+		uiContext.Render();
 
 		rendererContext.SwapBuffers();
 	}

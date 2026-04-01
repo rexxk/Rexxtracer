@@ -3,6 +3,8 @@
 #include "Core/Base.h"
 #include "Core/Window.h"
 
+#include <GLFW/glfw3.h>
+
 #include <cstdint>
 
 
@@ -17,6 +19,8 @@ namespace Nut
 
 		auto SwapBuffers() -> void;
 		auto PollEvents() -> void;
+
+		auto GetWindowHandle() -> GLFWwindow*;
 
 	private:
 		WindowSpecification m_WindowSpecification{};
